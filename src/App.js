@@ -36,7 +36,13 @@ const configMenu = {
     { name: 'Another action', isFolder: false, id: 4, idPadre: 2 },
     { name: 'sub menu', isFolder: true, id: 5, idPadre: 2 },
     { name: 'Another action', isFolder: false, id: 55, idPadre: 5 },
-    { name: 'something else here', isFolder: false, id: 56, idPadre: 5 },
+    { name: 'agregado 1', isFolder: false, id: 56, idPadre: 5 },
+    { name: 'agregado 2', isFolder: false, id: 57, idPadre: 5 },
+    { name: 'agregado 3', isFolder: true, id: 58, idPadre: 5 },
+    { name: 'submenu3', isFolder: true, id: 581, idPadre: 58 },
+    { name: 'submenu3', isFolder: true, id: 582, idPadre: 581 },
+    
+
   ],
 } // end
 

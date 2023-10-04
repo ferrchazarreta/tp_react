@@ -3,66 +3,119 @@ import './Menu.css';
 
 class Menu extends Component {
     render() {
-        const { background, itemBackground, itemColor, itemActive } = this.props.data.configColor
-        const { idFirstNivel, menuItems } = this.props.data
+        const { configColor, idFirstNivel, menuItems } = this.props.data
 
-        function subMenu(idFirstNivel,menuItems){
-            let itemSecundarios = []
-            for (let j = 0; j < menuItems.length; j++) {
-                if (idFirstNivel === menuItems[j].idPadre) {
-                    itemSecundarios.push(
-                        <ul className='subMenuNivelUno'>
-                            <li key={j}>
-                                <a>{menuItems[j].name}</a>
-                            </li>
-                        </ul>
-                    )
-                }
-            }
-            return(itemSecundarios)
+        const subMenuNivelUnoItems = (parentId) => {
+            return menuItems.filter((item) => item.idPadre === parentId)
         }
 
-        function menuPrimario(idFirstNivel, menuItems) {
-            let itemPrimarios = []
-            for (let i = 0; i < menuItems.length; i++) {
-                if (menuItems[i].idPadre === idFirstNivel) {
-                    itemPrimarios.push(
-                        <li key={i}>
-                            <a>{menuItems[i].name}</a>
-                        </li>)
-                    if (menuItems[i].isFolder === true) {
-                        subMenu(menuItems[i].id,menuItems)  
+        const renderSubMenu = (subMenuItem) => {
+            const getSubMenuItems = subMenuNivelUnoItems(subMenuItem.id);
+
+            return (
+                <li key={subMenuItem.id}>
+                    <a style={{ backgroundColor: configColor.itemBackground, color: configColor.itemColor }}>
+                        {subMenuItem.name}
+                    </a>
+                    <ul style={{ backgroundColor: configColor.background }} className="subMenuNivelDos">
+                        {
+                            getSubMenuItems.map((subMenuItemNivel2) => {
+                                if (subMenuItem.id === subMenuItemNivel2.idPadre) {
+                                    return renderSubMenuNivel2(subMenuItemNivel2);
+                                }
+                                return null;
+                            })
+                        }
+                    </ul>
+                </li>
+            )
+        }
+
+        const renderSubMenuNivel2 = (subMenuItemNivel2) => {
+            const getSubMenuItems = subMenuNivelUnoItems(subMenuItemNivel2.id);
+
+            return (
+                <li key={subMenuItemNivel2.id}>
+                    <a style={{ backgroundColor: configColor.itemBackground, color: configColor.itemColor }}>
+                        {subMenuItemNivel2.name}
+                    </a>
+                    <ul style={{ backgroundColor: configColor.background }} className="subMenuNivelDos">
+                    {
+                        getSubMenuItems.map((subMenuItemNivel3) => {
+                            if (subMenuItemNivel2.id === subMenuItemNivel3.idPadre) {
+                                return renderSubMenu(subMenuItemNivel3);
+                            }
+                            return null;
+                        })
                     }
-                }
-            }
-            return (itemPrimarios)
+                    </ul>
+                </li>
+            )
         }
+
+        const renderMenuItem = (menuItem) => {
+            const getSubMenuItems = subMenuNivelUnoItems(menuItem.id);
+
+            return (
+                <li key={menuItem.id}>
+                    <a style={{ backgroundColor: configColor.itemBackground, color: configColor.itemColor }}>
+                        {menuItem.name}
+                    </a>
+                    <ul style={{ backgroundColor: configColor.background }} className="subMenuNivelUno">
+                        {
+                            getSubMenuItems.map((subMenuItem) => {
+                                if (menuItem.id === subMenuItem.idPadre) {
+                                    return renderSubMenu(subMenuItem);
+                                }
+                                return null;
+                            })
+                        }
+                    </ul>
+                    {/* {getSubMenuItems.length > 0 && (
+                        <ul style={{ backgroundColor: configColor.itemBackground }} className='subMenuNivelUno'>
+                            {getSubMenuItems.map((subMenuItem) => {
+                                const nivel2 = subMenuNivelUnoItems(subMenuItem.id)
+                                return (
+                                    <li key={subMenuItem.id}>
+                                        <a style={{ color: configColor.itemColor }} href={`#${subMenuItem.id}`}>
+                                            {subMenuItem.name}
+                                        </a>
+                                        {nivel2.length > 0 && (
+                                            <ul style={{ backgroundColor: configColor.itemBackground }} className='subMenuNivelDos'>
+                                                {nivel2.map((subMenuNivelDosItem) => {
+                                                    return (
+                                                        <li key={subMenuItem.id}>
+                                                            <a style={{ color: configColor.itemColor }} href={`#${subMenuItem.id}`}>
+                                                                {subMenuNivelDosItem.name}
+                                                            </a>
+                                                        </li>
+                                                    )
+                                                })}
+                                            </ul>
+                                        )
+                                        }
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    )} */}
+                </li>
+            );
+        }
+
+
 
         return (
-            <nav>
-                <ul className="menu">
-                    {menuPrimario(idFirstNivel, menuItems)}
-                    {/* <li><a href="#">Inicio</a></li>
-                    <li>
-                        <a href="#">Servicios</a>
-                        <ul className="subMenuNivelUno">
-                            <li><a href="#">Diseño web</a></li>
-                            <li><a href="#">Desarrollo web</a></li>
-                            <li>
-                                <a href="#">Marketing digital</a>
-                                <ul className="subMenuNivelDos">
-                                    <li><a href="#">Prueba 1</a></li>
-                                    <li><a href="#">Prueba 2</a></li>
-                                    <li><a href="#">Prueba 3</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Portafolio</a></li>
-                    <li><a href="#">Contacto</a></li> */}
+            <nav >
+                <ul style={{ backgroundColor: configColor.background }} className="menu">
+                    {menuItems.map((menuItem) => {
+                        if (menuItem.idPadre === idFirstNivel) {
+                            return renderMenuItem(menuItem);
+                        }
+                        return null;
+                    })}
                 </ul>
             </nav>
-
         )
     }
 
