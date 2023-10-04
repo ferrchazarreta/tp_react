@@ -40,7 +40,10 @@ const configMenu = {
     { name: 'agregado 2', isFolder: false, id: 57, idPadre: 5 },
     { name: 'agregado 3', isFolder: true, id: 58, idPadre: 5 },
     { name: 'submenu3', isFolder: true, id: 581, idPadre: 58 },
-    { name: 'submenu3', isFolder: true, id: 582, idPadre: 581 },
+    { name: 'submenu3', isFolder: true, id: 582, idPadre: 58 },
+    { name: 'submenu4', isFolder: true, id: 583, idPadre: 582 },
+    { name: 'submenu4', isFolder: true, id: 584, idPadre: 582 },
+    { name: 'submenu5', isFolder: true, id: 585, idPadre: 584 },
     
 
   ],
