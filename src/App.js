@@ -24,8 +24,8 @@ const CLASS_UML2 = {
 const configMenu = {
   configColor: {
     background: '#f4f5fa', // Color de Fondo General de la botonera
-    itemBackground: '#d0d0d0',// Color de Fondo de los subMenús
-    itemColor: '#666', // Color del texto de cada item del menú
+    itemBackground: 'grey',// Color de Fondo de los subMenús
+    itemColor: 'white', // Color del texto de cada item del menú
     itemActive: '#a8a8a8', // Color cuando hace click y se abre un submenú
   },
   idFirstNivel: 150,
@@ -39,12 +39,9 @@ const configMenu = {
     { name: 'agregado 1', isFolder: false, id: 56, idPadre: 5 },
     { name: 'agregado 2', isFolder: false, id: 57, idPadre: 5 },
     { name: 'agregado 3', isFolder: true, id: 58, idPadre: 5 },
-    { name: 'submenu3', isFolder: true, id: 581, idPadre: 58 },
-    { name: 'submenu3', isFolder: true, id: 582, idPadre: 58 },
-    { name: 'submenu4', isFolder: true, id: 583, idPadre: 582 },
-    { name: 'submenu4', isFolder: true, id: 584, idPadre: 582 },
-    { name: 'submenu5', isFolder: true, id: 585, idPadre: 584 },
-    
+    { name: 'agregado 4', isFolder: false, id: 581, idPadre: 58 },
+    { name: 'agregado 4', isFolder: true, id: 582, idPadre: 58 },
+    { name: 'agregado 4', isFolder: false, id: 583, idPadre: 582 },
 
   ],
 } // end

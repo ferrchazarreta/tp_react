@@ -1,0 +1,21 @@
+.subMenuItems{
+  position: relative;
+  width: 100%;
+  padding: 10px;
+}
+
+.menuDerecha{
+  position: absolute;
+  list-style: none;
+  top: 0;
+  margin: 0;
+  width: 100%;
+  left: 100%;
+  padding: 0;
+  
+}
+
+.itemDerecha{
+  width: 100%;
+}
+

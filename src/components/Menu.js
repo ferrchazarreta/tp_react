@@ -1,10 +1,6 @@
 import { Component } from 'react';
-import './Menu.css';
+import './Menu.css'
 import SubMenu from './SubMenu';
-
-//menu(menuItems,idFirstNivel) => lista(items.id=idFirstNivel)
-//otroMenu(menuItems,idFirstNivel) => lista(items.id!=idFirstNivel)
-//SubMenu(otroMenu,items.id)
 
 class Menu extends Component {
     constructor(props) {
@@ -20,11 +16,11 @@ class Menu extends Component {
 
         return (
             <nav>
-                <ul>
+                <ul className='menu'>
                     {itemsMenu.map((item,index)=>{
                         return(
-                            <li key={index}>
-                                <SubMenu item={item} itemsSubMenu={itemsSubMenu}/>
+                            <li key={index} style={{backgroundColor:this.configColor.background}} className='itemMenu' >
+                                <SubMenu item={item} itemsSubMenu={itemsSubMenu} configColor={this.configColor}/>
                             </li>
                         )
                     })}
