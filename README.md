@@ -1,7 +1,7 @@
 # Integrantes
 
-Gurrea Mateo 43883338 m.gurrea@itecriocuarto.org.ar
-Fernando Chazarreta 41377831 f.chazarreta@itecriocuarto.org.ar
+#Gurrea Mateo 43883338 m.gurrea@itecriocuarto.org.ar
+#Fernando Chazarreta 41377831 f.chazarreta@itecriocuarto.org.ar
 
 ## Descripcion
 
